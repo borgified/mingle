@@ -15,7 +15,14 @@ $ua->agent("");
 #my $req = HTTP::Request->new(DELETE => 'http://admin:admin@10.3.11.122:8080/api/v2/users/4.xml');
 
 #editing card
-my $req = HTTP::Request->new(PUT => 'http://admin:admin@10.3.11.122:8080/api/v2/projects/test1/cards/1.xml');
+#my $req = HTTP::Request->new(PUT => 'http://admin:admin@10.3.11.122:8080/api/v2/projects/test1/cards/1.xml');
+
+#editing a card's type
+#my $req = HTTP::Request->new(PUT => 'http://admin:admin@10.3.11.122:8080/api/v2/projects/test1/cards/1.xml');
+#my $req = HTTP::Request->new(PUT => 'http://admin:admin@10.3.11.122:8080/api/v2/projects/test1/card_types.xml');
+
+#create a card
+my $req = HTTP::Request->new(POST => 'http://admin:admin@10.3.11.122:8080/api/v2/projects/test1/cards.xml');
 
 $req->content_type('application/x-www-form-urlencoded');
 
@@ -54,7 +61,17 @@ card[name]=hello
 CARD
 ;
 
-$req->content($card);
+my $type= <<TYPE
+card[card_type_name]=story
+TYPE
+;
+
+my $create=<<CREATE
+card[name]=newcard
+CREATE
+;
+
+$req->content($create);
 
 # Pass request to the user agent and get a response back
 my $res = $ua->request($req);
