@@ -1,0 +1,1 @@
+curl -d "user[name]=John Smith" -d "user[login]=john" -d "user[email]=jsmith@example.com" -d "user[password]=john" -d "user[password_confirmation]=john" -d "user[version_control_user_name]=jsmith" -d "user[jabber_user_name]=jsmith" -d "user[admin]=false" -d "user[light]=true" 'http://admin:admin@10.3.11.122:8080/api/v2/users.xml'
